@@ -1,8 +1,8 @@
 enum Maze {
     Branch {
         label: String,
-        left: Box<Tree>,
-        right: Box<Tree>,
+        left: Rc<Maze>,
+        right: Rc<Maze>,
         status: Status,
     },
     Leaf { label: String },
