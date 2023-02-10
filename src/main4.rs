@@ -1,5 +1,3 @@
-
-
 use std::cell::RefCell;
 
 #[test]
@@ -9,7 +7,7 @@ fn main4() {
     enum Exploration {
         Explored,
         UnExplored,
-        PartiallyExplored
+        PartiallyExplored,
     }
 
     enum Maze {
@@ -68,7 +66,7 @@ fn main4() {
             match self {
                 Maze::Leaf { label } => {
                     trace.push(label.clone());
-                },
+                }
                 Maze::Branch { label, left, right, status } => {
                     trace.push(label.to_owned());
                     let mut status = status.borrow_mut();
@@ -89,13 +87,11 @@ fn main4() {
         }
     }
 
-    let mut work = vec![Rc::clone(&branch0)];
+    let mut work = vec![Rc::clone(&branch0)]; //Racine de l'arbre
     let mut trace = vec![];
     while work.len() != 0 {
         let node = work.pop().expect("unexpected");
         node.explore(Rc::clone(&node), &mut work, &mut trace);
         println!("trace so far: {:?}", trace);
     }
-
-
 }

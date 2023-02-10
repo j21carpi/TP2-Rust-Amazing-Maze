@@ -1,3 +1,0 @@
-enum Exploration{
-    Explored, UnExplored
-}
